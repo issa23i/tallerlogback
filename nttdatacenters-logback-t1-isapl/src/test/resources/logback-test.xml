@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="2 seconds">
+		<appender name="appenderconsole" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			</encoder>
+		</appender>
+		!-- ROLLINGFILEAPPENDER
+		<appender name="appenderrollingpolicy" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			!-- SALIDA POR FICHERO
+			<file>"C:\Users\issa2\Desktop\DESARROLLO\WORKSPACES\BACKEND\nttdatacenters-logback-t1-isapl\logs\salidalog.log"</file>
+				<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+					<fileNamePattern>"C:\Users\issa2\Desktop\DESARROLLO\WORKSPACES\BACKEND\nttdatacenters-logback-t1-isapl\logs\salidalog.%d{yy-MM-dd}.%i.log.gz"</fileNamePattern>	
+					<maxFileSize>5MB</maxFileSize>
+					!-- tiempo de guardado máximo
+					<maxHistory>30</maxHistory>
+					!-- máxima capacidad guardado
+					<totalSizeCap>50MB</totalSizeCap>
+				</rollingPolicy>
+			!-- LAYOUT PERSONALIZADO
+			<encoder>
+				<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - [%method] - %msg%n</pattern>
+			</encoder>
+		</appender>
+		<root level="debug">
+			<appender-ref ref="appenderconsole"/>
+			<appender-ref ref="appenderrollingpolicy"/>
+		</root>
+</configuration>
